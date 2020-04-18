@@ -28,18 +28,23 @@ left: 1%;
 
 export default function CharGrid() {
   const [charData, setCharData] = useState([]);
-  const [pageUrl, setPageUrl] = useState('https://swapi.py4e.com/api/people/')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageUrl, setPageUrl] = useState(`https://swapi.py4e.com/api/people/?page=${currentPage}`)
+
 
   useEffect(() => {
     axios
     .get(pageUrl)
     .then(response => {
       setCharData(response.data.results);
+      console.log(response.data);
+      console.log('nextUrl', response.data.next);
+      console.log('previousUrl', response.data.previous);
     })
     .catch(error => {
       console.log("The data was not returned", error);
     });
-  }, []);
+  }, [pageUrl]);
 
   return (
     <Container>
