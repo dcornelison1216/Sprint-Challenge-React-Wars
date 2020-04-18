@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CharGrid from ''./components/CharGrid';
+import CharGrid from './components/CharGrid';
 import styled from 'styled-components';
 
 const Header = styled.h1`
