@@ -1,41 +1,39 @@
 // Write your Character component here
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import CharCard from './CharCard';
+import { Card, Col } from "reactstrap";
 
-const Container = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around;
+const Name = styled.h2`
+margin: .8rem auto;
+color: #443e3e;
+text-shadow: 1px 1px 5px #fff;
 `;
 
-export default function CharGrid() {
-  const [photoData, setPhotoData] = useState([]);
+const Gender = styled.p`
+margin: .5rem 0rem;
+text-align: center;
+text-transform: capitalize;
+text-shadow: 1px 1px 5px #fff;
+`;
 
-  useEffect(() => {
-    axios
-    .get("https://swapi.py4e.com/api/people/")
-    .then(response => {
-      setPhotoData(response.data.results);
-      console.log(response.data.results);
-    })
-    .catch(error => {
-      console.log("The data was not returned", error);
-    });
-  }, []);
+const Details = styled.p`
+margin: .5rem 0rem;
+text-align: center;
+text-transform: capitalize;
+text-shadow: 1px 1px 5px #fff;
+`;
 
+const CharCard = props => {
   return (
-    <Container>
-      {photoData.map((char, index) => {
-        return <CharCard
-        name={char.name}
-        key={index}
-        height={char.height}
-        mass={char.mass}
-        gender={char.gender} />
-      })}
-    </Container>
+    <Col>
+      <Card className="char-card">
+        <Name>{props.name}</Name>
+        <Gender>{props.gender}</Gender>
+        <Details>Height: {props.height} m</Details>
+        <Details>Mass: {props.mass} kg</Details>
+      </Card>
+    </Col>
   );
-}
+};
+
+export default CharCard;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Character from "./components/Character";
+import CharGrid from "./components/CharGrid";
 import styled from "styled-components";
 
 const Header = styled.h1`
@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className="App">
       <Header>Characters</Header>
-      <Character />
+      <CharGrid />
     </div>
   );
 }
