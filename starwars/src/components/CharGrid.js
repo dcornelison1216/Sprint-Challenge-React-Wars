@@ -18,7 +18,6 @@ export default function CharGrid() {
     .get("https://swapi.py4e.com/api/people/")
     .then(response => {
       setCharData(response.data.results);
-      console.log(response.data.results);
     })
     .catch(error => {
       console.log("The data was not returned", error);
