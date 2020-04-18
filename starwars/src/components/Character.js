@@ -31,6 +31,10 @@ const CharCard = props => {
         <Gender>{props.gender}</Gender>
         <Details>Height: {props.height} m</Details>
         <Details>Mass: {props.mass} kg</Details>
+        <Details>Hair Color: {props.hair_color}</Details>
+        <Details>Skin Color: {props.skin_color}</Details>
+        <Details>Eye Color: {props.eye_color}</Details>
+        <Details>Birth Year: {props.birth_year}</Details>
       </Card>
     </Col>
   );

@@ -33,7 +33,11 @@ export default function CharGrid() {
         key={index}
         height={char.height}
         mass={char.mass}
-        gender={char.gender} />
+        gender={char.gender}
+        hair_color={char.hair_color}
+        skin_color={char.skin_color}
+        eye_color={char.eye_color}
+        birth_year={char.birth_year} />
       })}
     </Container>
   );
