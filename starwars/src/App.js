@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import CharGrid from "./components/CharGrid";
-import styled from "styled-components";
+import CharGrid from ''./components/CharGrid';
+import styled from 'styled-components';
 
 const Header = styled.h1`
 color: #443e3e;

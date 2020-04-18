@@ -1,7 +1,7 @@
 // Write your Character component here
 import React from 'react';
 import styled from 'styled-components';
-import { Card, Col } from "reactstrap";
+import { Card, Col } from 'reactstrap';
 
 const Name = styled.h2`
 margin: .8rem auto;
