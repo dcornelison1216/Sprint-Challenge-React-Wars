@@ -29,12 +29,10 @@ left: 1%;
 export default function CharGrid() {
   const [charData, setCharData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1)
-  const [pageUrl, setPageUrl] = useState(`https://swapi.py4e.com/api/people/?page=${currentPage}`)
-
 
   useEffect(() => {
     axios
-    .get(pageUrl)
+    .get(`https://swapi.py4e.com/api/people/?page=${currentPage}`)
     .then(response => {
       setCharData(response.data.results);
       console.log(response.data);
@@ -44,11 +42,11 @@ export default function CharGrid() {
     .catch(error => {
       console.log("The data was not returned", error);
     });
-  }, [pageUrl]);
+  }, [currentPage]);
 
   return (
     <Container>
-      <PreviousButton>Previous</PreviousButton>
+      <PreviousButton onClick={() => setCurrentPage(currentPage + 1)}>Previous</PreviousButton>
       {charData.map((char, index) => {
         return <Character
         name={char.name}
@@ -61,7 +59,7 @@ export default function CharGrid() {
         eye_color={char.eye_color}
         birth_year={char.birth_year} />
       })}
-      <NextButton>Next</NextButton>
+      <NextButton onClick={() => setCurrentPage(currentPage + 1)}>Next</NextButton>
     </Container>
   );
 }
