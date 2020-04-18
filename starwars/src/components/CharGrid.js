@@ -35,9 +35,6 @@ export default function CharGrid() {
     .get(`https://swapi.py4e.com/api/people/?page=${currentPage}`)
     .then(response => {
       setCharData(response.data.results);
-      console.log(response.data);
-      console.log('nextUrl', response.data.next);
-      console.log('previousUrl', response.data.previous);
     })
     .catch(error => {
       console.log("The data was not returned", error);
@@ -46,7 +43,13 @@ export default function CharGrid() {
 
   return (
     <Container>
-      <PreviousButton onClick={() => setCurrentPage(currentPage + 1)}>Previous</PreviousButton>
+      <PreviousButton onClick={() => {
+        if(currentPage == 1) {
+          setCurrentPage(9)
+        } else {
+          setCurrentPage(currentPage - 1)
+        }
+        }}>Previous</PreviousButton>
       {charData.map((char, index) => {
         return <Character
         name={char.name}
@@ -59,7 +62,13 @@ export default function CharGrid() {
         eye_color={char.eye_color}
         birth_year={char.birth_year} />
       })}
-      <NextButton onClick={() => setCurrentPage(currentPage + 1)}>Next</NextButton>
+      <NextButton onClick={() => {
+        if(currentPage == 9) {
+          setCurrentPage(1)
+        } else {
+          setCurrentPage(currentPage + 1)
+        }
+      }}>Next</NextButton>
     </Container>
   );
 }
