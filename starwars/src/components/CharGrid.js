@@ -10,12 +10,29 @@ flex-wrap: wrap;
 justify-content: space-around;
 `;
 
+const NextButton = styled.button`
+width: auto;
+margin: auto 0;
+position: absolute;
+top: 50%;
+right: 1%;
+`;
+
+const PreviousButton = styled.button`
+width: auto;
+margin: auto 0;
+position: absolute;
+top: 50%;
+left: 1%;
+`;
+
 export default function CharGrid() {
   const [charData, setCharData] = useState([]);
+  const [pageUrl, setPageUrl] = useState('https://swapi.py4e.com/api/people/')
 
   useEffect(() => {
     axios
-    .get("https://swapi.py4e.com/api/people/")
+    .get(pageUrl)
     .then(response => {
       setCharData(response.data.results);
     })
@@ -26,6 +43,7 @@ export default function CharGrid() {
 
   return (
     <Container>
+      <PreviousButton>Previous</PreviousButton>
       {charData.map((char, index) => {
         return <Character
         name={char.name}
@@ -38,6 +56,7 @@ export default function CharGrid() {
         eye_color={char.eye_color}
         birth_year={char.birth_year} />
       })}
+      <NextButton>Next</NextButton>
     </Container>
   );
 }
